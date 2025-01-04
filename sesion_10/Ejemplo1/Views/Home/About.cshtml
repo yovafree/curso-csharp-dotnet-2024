@@ -1,0 +1,59 @@
+<h1>Hola Mundo, esto esto una prueba de una método de acción</h1>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tabla del 9</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 1; i <= 10; i++)
+        {
+            <tr>
+                <td>9 x @i = @(9 * i)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="totito" class="col-md-12"></div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        // Mostrar un tablero de totito en un div llamado totito
+        var tablero = document.getElementById("totito");
+        var tabla = document.createElement("table");
+        var tbody = document.createElement("tbody");
+        tabla.setAttribute("class", "table table-bordered");
+        for (var i = 0; i < 3; i++) {
+            var fila = document.createElement("tr");
+            for (var j = 0; j < 3; j++) {
+                var celda = document.createElement("td");
+                celda.setAttribute("id", "celda" + i + j);
+                celda.setAttribute("onclick", "jugar(" + i + "," + j + ")");
+                celda.innerHTML = "";
+                fila.appendChild(celda);
+            }
+            tbody.appendChild(fila);
+        }
+        tabla.appendChild(tbody);
+        tablero.appendChild(tabla);
+
+        var jugador = "X";
+        function jugar(fila, columna) {
+            var celda = document.getElementById("celda" + fila + columna);
+            if (celda.innerHTML == "") {
+                celda.innerHTML = jugador;
+                if (jugador == "X") {
+                    jugador = "O";
+                } else {
+                    jugador = "X";
+                }
+            }
+        }
+
+    </script>
+}
