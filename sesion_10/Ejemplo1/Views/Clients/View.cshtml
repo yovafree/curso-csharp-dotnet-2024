@@ -1,0 +1,14 @@
+@model Ejemplo1.Models.Client;
+
+<h1>Detalles del cliente</h1>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Nombre</th>
+        <td>@Model.Name @Model.LastName</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+</table>

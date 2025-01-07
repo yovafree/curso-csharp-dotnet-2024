@@ -1,7 +1,19 @@
+using Ejemplo1.Models;
+using Ejemplo1.Repositories;
+using Ejemplo1.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.InMemory;
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<AppDBContext>(options => options.UseInMemoryDatabase("AppDBContext"));
+builder.Services.AddScoped<IClientRepository, ClientRepository>();
+
+var ClientRepository = builder.Services.BuildServiceProvider().GetService<IClientRepository>();
+ClientRepository?.LoadData();
 
 var app = builder.Build();
 

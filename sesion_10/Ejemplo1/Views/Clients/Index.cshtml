@@ -1,0 +1,33 @@
+<h1>Lista de clientes</h1>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Acciones</th>
+    </tr>
+    @foreach (var client in ViewBag.Clients)
+    {
+        <tr>
+            <td>@client.Name @client.LastName</td>
+            <td>@client.Email</td>
+            <td>
+                <a asp-action="View" asp-controller="Clients" asp-route-id="@client.Id">Ver Registro</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+    </tr>
+    @foreach (var client in ViewData["Clients"] as List<Client>)
+    {
+        <tr>
+            <td>@client.Name @client.LastName</td>
+            <td>@client.Email</td>
+        </tr>
+    }
+</table>
