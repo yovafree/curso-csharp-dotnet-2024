@@ -1,0 +1,39 @@
+﻿@model IEnumerable<imdb.web.Models.Movie>
+
+
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-5">
+    <div class="col-md-12">
+        <form asp-action="Index" method="get">
+            <p>
+                <label>Find by Title</label>
+                <input type="text" class="form-control" name="searchString" value="@ViewData["CurrentFilter"]" />
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </p>
+        </form>
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+    <div class="col">
+        <div class="card shadow-sm">
+            <img src="@item.Poster" class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Thumbdnail" />
+            <div class="card-body">
+                <p class="card-header">
+                    @item.Title
+                </p>
+                <p class="card-text">Genre: @item.Genre <br />
+                    Year: @item.Year    
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View More</a>
+                    </div>
+                        <small class="text-body-secondary">Rating @item.ImdbRating</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>

@@ -1,0 +1,16 @@
+﻿@model imdb.web.Models.Movie
+
+<div class="row">
+    <div class="col-md-4">
+        <img src="@Model.Poster" class="bd-placeholder-img card-img-top" width="100%" height="500" role="img" aria-label="Thumbdnail" />
+    </div>
+    <div class="col-md-8">
+        <h1>@Model.Title</h1>
+        <p>Genre: @Model.Genre</p>
+        <p>Year: @Model.Year</p>
+        <p>Rating: @Model.ImdbRating</p>
+        <p>Director: @Model.Director</p>
+        <p>Actors: @Model.Actors</p>
+        <p>Plot: @Model.Plot</p>
+    </div>
+</div>
